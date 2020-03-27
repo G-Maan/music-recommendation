@@ -1,13 +1,13 @@
-package com.mielniczuk.recommendation.music;
+package com.mielniczuk.recommendation.musiccatalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MusicRecommendationApplication {
+public class MusicCatalogServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MusicRecommendationApplication.class, args);
+		SpringApplication.run(MusicCatalogServiceApplication.class, args);
 	}
 
 }

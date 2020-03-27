@@ -1,10 +1,10 @@
-package com.mielniczuk.recommendation.music;
+package com.mielniczuk.recommendation.musiccatalogservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MusicRecommendationApplicationTests {
+class MusicCatalogServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
