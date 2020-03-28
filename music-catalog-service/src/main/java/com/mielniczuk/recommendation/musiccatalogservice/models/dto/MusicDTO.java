@@ -1,16 +1,18 @@
 package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
 
-public class MovieDTO {
+public class MusicDTO {
 
     private int id;
     private String name;
+    private String description;
 
-    public MovieDTO() {
+    public MusicDTO() {
     }
 
-    public MovieDTO(int id, String name) {
+    public MusicDTO(int id, String name, String description) {
         this.id = id;
         this.name = name;
+        this.description = description;
     }
 
     public int getId() {
@@ -29,11 +31,20 @@ public class MovieDTO {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "MovieDTO{" +
+        return "MusicDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

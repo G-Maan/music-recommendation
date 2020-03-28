@@ -1,8 +1,15 @@
 package com.mielniczuk.recommendation.ratingsdataservice.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "rating")
 public class Rating {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private int rating;
 
     public Rating() {

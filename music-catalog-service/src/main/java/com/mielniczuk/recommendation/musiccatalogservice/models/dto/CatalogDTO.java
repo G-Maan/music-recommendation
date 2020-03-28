@@ -6,24 +6,37 @@ public class CatalogDTO {
 
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private int rating;
 
     public CatalogDTO() {
     }
 
-    public CatalogDTO(int id, String name, String desc, int rating) {
+    public CatalogDTO(int id, String name, String description, int rating) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.rating = rating;
     }
 
     public CatalogDTO(Catalog catalog) {
         this.id = catalog.getId();
         this.name = catalog.getName();
-        this.desc = catalog.getDescription();
+        this.description = catalog.getDescription();
         this.rating = catalog.getRating();
+    }
+
+    public CatalogDTO(int id, CatalogDTO catalog) {
+        this.id = id;
+        this.name = catalog.getName();
+        this.description = catalog.getDescription();
+        this.rating = catalog.getRating();
+    }
+
+    public CatalogDTO(MusicDTO musicDTO, RatingDTO ratingDTO) {
+        this.name = musicDTO.getName();
+        this.description = musicDTO.getDescription();
+        this.rating = ratingDTO.getRating();
     }
 
     public int getId() {
@@ -42,12 +55,12 @@ public class CatalogDTO {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getRating() {
