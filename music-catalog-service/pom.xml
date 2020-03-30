@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+		<reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
 	</properties>
 
 	<dependencies>
@@ -51,7 +52,7 @@
 		<dependency>
 			<groupId>org.projectreactor</groupId>
 			<artifactId>reactor-spring</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${reactor-spring.version}</version>
 		</dependency>
 
 		<dependency>
