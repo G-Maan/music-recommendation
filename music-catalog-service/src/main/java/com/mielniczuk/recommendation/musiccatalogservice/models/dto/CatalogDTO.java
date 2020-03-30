@@ -36,7 +36,7 @@ public class CatalogDTO {
     public CatalogDTO(MusicDTO musicDTO, RatingDTO ratingDTO) {
         this.name = musicDTO.getName();
         this.description = musicDTO.getDescription();
-        this.rating = ratingDTO.getRating();
+        this.rating = ratingDTO.getValue();
     }
 
     public int getId() {

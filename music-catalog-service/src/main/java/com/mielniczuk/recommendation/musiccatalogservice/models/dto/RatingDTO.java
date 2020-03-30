@@ -3,14 +3,14 @@ package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
 public class RatingDTO {
 
     private int id;
-    private int rating;
+    private int value;
 
     public RatingDTO() {
     }
 
-    public RatingDTO(int id, int rating) {
+    public RatingDTO(int id, int value) {
         this.id = id;
-        this.rating = rating;
+        this.value = value;
     }
 
     public int getId() {
@@ -21,19 +21,19 @@ public class RatingDTO {
         this.id = id;
     }
 
-    public int getRating() {
-        return rating;
+    public int getValue() {
+        return value;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setValue(int value) {
+        this.value = value;
     }
 
     @Override
     public String toString() {
         return "RatingDTO{" +
                 "id=" + id +
-                ", rating=" + rating +
+                ", value=" + value +
                 '}';
     }
 }

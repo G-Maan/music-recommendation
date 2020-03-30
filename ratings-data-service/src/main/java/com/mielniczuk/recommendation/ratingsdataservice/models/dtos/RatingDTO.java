@@ -5,16 +5,16 @@ import com.mielniczuk.recommendation.ratingsdataservice.models.Rating;
 public class RatingDTO {
 
     private int id;
-    private int rating;
+    private int value;
 
-    public RatingDTO(int id, int rating) {
+    public RatingDTO(int id, int value) {
         this.id = id;
-        this.rating = rating;
+        this.value = value;
     }
 
     public RatingDTO(Rating rating) {
         this.id = rating.getId();
-        this.rating = rating.getRating();
+        this.value = rating.getValue();
     }
 
     public RatingDTO() {
@@ -24,7 +24,15 @@ public class RatingDTO {
         return id;
     }
 
-    public int getRating() {
-        return rating;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

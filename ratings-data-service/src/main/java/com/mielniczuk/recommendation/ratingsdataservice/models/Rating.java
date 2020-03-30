@@ -1,5 +1,7 @@
 package com.mielniczuk.recommendation.ratingsdataservice.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,14 +12,13 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int rating;
+    private int value;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private UserRating userRating;
 
     public Rating() {
-    }
-
-    public Rating(int id, int rating) {
-        this.id = id;
-        this.rating = rating;
     }
 
     public int getId() {
@@ -28,11 +29,19 @@ public class Rating {
         this.id = id;
     }
 
-    public int getRating() {
-        return rating;
+    public int getValue() {
+        return value;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public UserRating getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(UserRating userRating) {
+        this.userRating = userRating;
     }
 }
