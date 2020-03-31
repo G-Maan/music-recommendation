@@ -19,12 +19,12 @@ public class RatingsResource {
     }
 
     @GetMapping("/{ratingId}")
-    public RatingDTO getRating(@PathVariable("ratingId") int ratingId) {
+    public RatingDTO getRating(@PathVariable("ratingId") Long ratingId) {
         return this.ratingService.getRating(ratingId);
     }
 
     @GetMapping("/users/{userId}")
-    public RatingListDTO getUserRatings(@PathVariable("userId") int userId) {
+    public RatingListDTO getUserRatings(@PathVariable("userId") Long userId) {
         return ratingService.getUserRatings(userId);
     }
 

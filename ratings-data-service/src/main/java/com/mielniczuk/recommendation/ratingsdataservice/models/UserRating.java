@@ -17,7 +17,7 @@ public class UserRating {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int id;
+    private Long id;
 
     @OneToMany(
             mappedBy = "userRating",

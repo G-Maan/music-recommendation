@@ -11,12 +11,12 @@ import lombok.ToString;
 @AllArgsConstructor
 public class CatalogDTO {
 
-    private int id;
+    private Long id;
     private String name;
     private String description;
     private int rating;
 
-    public CatalogDTO(int id, CatalogDTO catalog) {
+    public CatalogDTO(Long id, CatalogDTO catalog) {
         this.id = id;
         this.name = catalog.getName();
         this.description = catalog.getDescription();

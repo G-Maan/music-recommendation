@@ -25,7 +25,7 @@ public class RatingService {
         this.userRatingRepository = userRatingRepository;
     }
 
-    public RatingDTO getRating(int ratingId) {
+    public RatingDTO getRating(Long ratingId) {
         Optional<Rating> rating = ratingRepository.findById(ratingId);
         if (rating.isPresent()) {
             return new RatingDTO(rating.get());
@@ -34,7 +34,7 @@ public class RatingService {
         }
     }
 
-    public RatingListDTO getUserRatings(int userId) {
+    public RatingListDTO getUserRatings(Long userId) {
         Optional<UserRating> userRating = userRatingRepository.findById(userId);
         return userRating.map(usr -> new RatingListDTO(usr.getRatings().stream().map(RatingDTO::new).collect(Collectors.toList()))).orElseThrow();
     }

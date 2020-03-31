@@ -17,7 +17,7 @@ public class MusicService {
         this.musicRepository = musicRepository;
     }
 
-    public MusicDTO getMusic(int musicId) {
+    public MusicDTO getMusic(Long musicId) {
         Optional<Music> music = this.musicRepository.findById(musicId);
         if (music.isPresent()) {
            return new MusicDTO(music.get());

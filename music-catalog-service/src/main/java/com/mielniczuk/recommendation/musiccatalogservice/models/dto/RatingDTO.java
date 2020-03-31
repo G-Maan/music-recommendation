@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class RatingDTO {
 
-    private int id;
+    private Long id;
     private int value;
 
 }

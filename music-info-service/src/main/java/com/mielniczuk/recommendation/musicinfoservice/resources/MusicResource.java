@@ -18,8 +18,7 @@ public class MusicResource {
     }
 
     @GetMapping("/{musicId}")
-    public MusicDTO getMusicInfo(@PathVariable("musicId") int musicId) {
-        System.out.println(musicId);
+    public MusicDTO getMusicInfo(@PathVariable("musicId") Long musicId) {
         return this.musicService.getMusic(musicId);
     }
 
