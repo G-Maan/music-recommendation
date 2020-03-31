@@ -1,6 +1,7 @@
 package com.mielniczuk.recommendation.musiccatalogservice.resources;
 
 import com.mielniczuk.recommendation.musiccatalogservice.models.dto.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/catalog")
+@RequiredArgsConstructor
 public class MusicCatalogResource {
 
     @Qualifier("musicInfoWebClient")
@@ -25,14 +27,6 @@ public class MusicCatalogResource {
     private final WebClient ratingWebClient;
 
     private final RestTemplate restTemplate;
-
-    public MusicCatalogResource(WebClient musicInfoWebClient,
-                                WebClient ratingWebClient,
-                                RestTemplate restTemplate) {
-        this.musicInfoWebClient = musicInfoWebClient;
-        this.ratingWebClient = ratingWebClient;
-        this.restTemplate = restTemplate;
-    }
 
     @GetMapping(path = "/{userId}")
     public UserCatalogDTO getCatalog(@PathVariable("userId") int userId) {

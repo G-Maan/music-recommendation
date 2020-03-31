@@ -2,6 +2,7 @@ package com.mielniczuk.recommendation.musicinfoservice.resources;
 
 import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDTO;
 import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieSummary;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,16 +12,13 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/movies")
+@RequiredArgsConstructor
 public class MovieResource {
 
     @Value("${api.key}")
     private String apiKey;
 
-    private RestTemplate restTemplate;
-
-    public MovieResource(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+    private final RestTemplate restTemplate;
 
     @GetMapping("/{movieId}")
     public MovieDTO getMovieInfo(@PathVariable("movieId") Long movieId) {

@@ -3,19 +3,17 @@ package com.mielniczuk.recommendation.musicinfoservice.services;
 import com.mielniczuk.recommendation.musicinfoservice.models.Music;
 import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MusicDTO;
 import com.mielniczuk.recommendation.musicinfoservice.repositories.MusicRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MusicService {
 
-    private MusicRepository musicRepository;
-
-    public MusicService(MusicRepository musicRepository) {
-        this.musicRepository = musicRepository;
-    }
+    private final MusicRepository musicRepository;
 
     public MusicDTO getMusic(Long musicId) {
         Optional<Music> music = this.musicRepository.findById(musicId);
