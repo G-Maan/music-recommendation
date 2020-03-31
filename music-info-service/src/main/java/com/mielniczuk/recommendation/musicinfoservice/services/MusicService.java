@@ -1,8 +1,9 @@
 package com.mielniczuk.recommendation.musicinfoservice.services;
 
-import com.mielniczuk.recommendation.musicinfoservice.models.Music;
-import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MusicDTO;
-import com.mielniczuk.recommendation.musicinfoservice.repositories.MusicRepository;
+import com.mielniczuk.recommendation.musicinfoservice.mappers.SongDataMapper;
+import com.mielniczuk.recommendation.musicinfoservice.models.SongData;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.SongDataDTO;
+import com.mielniczuk.recommendation.musicinfoservice.repositories.SongDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MusicService {
 
-    private final MusicRepository musicRepository;
+    private final SongDataRepository songDataRepository;
 
-    public MusicDTO getMusic(Long musicId) {
-        Optional<Music> music = this.musicRepository.findById(musicId);
-        if (music.isPresent()) {
-           return new MusicDTO(music.get());
-        } else {
-            throw new NoSuchElementException();
-        }
+    private final SongDataMapper songDataMapper;
+
+    public SongDataDTO getMusic(Long musicId) {
+        Optional<SongData> songInfo = this.songDataRepository.findById(musicId);
+        return songInfo.map(songDataMapper::toDTO).orElseThrow(NoSuchElementException::new);
     }
 }

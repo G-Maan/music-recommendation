@@ -6,10 +6,10 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "music")
+@Table(name = "song_data")
 @Data
 @ToString
-public class Music {
+public class SongData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

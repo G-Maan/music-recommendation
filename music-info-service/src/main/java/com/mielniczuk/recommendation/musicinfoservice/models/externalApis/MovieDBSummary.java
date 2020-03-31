@@ -1,4 +1,4 @@
-package com.mielniczuk.recommendation.musicinfoservice.models.dtos;
+package com.mielniczuk.recommendation.musicinfoservice.models.externalApis;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Data
 @Table
-public class MovieSummary {
+public class MovieDBSummary {
 
     private Long id;
 

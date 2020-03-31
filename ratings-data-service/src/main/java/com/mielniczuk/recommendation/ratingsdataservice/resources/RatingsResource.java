@@ -1,7 +1,7 @@
 package com.mielniczuk.recommendation.ratingsdataservice.resources;
 
 import com.mielniczuk.recommendation.ratingsdataservice.models.dtos.RatingDTO;
-import com.mielniczuk.recommendation.ratingsdataservice.models.dtos.RatingListDTO;
+import com.mielniczuk.recommendation.ratingsdataservice.models.dtos.UserRatingListDTO;
 import com.mielniczuk.recommendation.ratingsdataservice.services.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class RatingsResource {
     }
 
     @GetMapping("/users/{userId}")
-    public RatingListDTO getUserRatings(@PathVariable("userId") Long userId) {
+    public UserRatingListDTO getUserRatings(@PathVariable("userId") Long userId) {
         return ratingService.getUserRatings(userId);
     }
 

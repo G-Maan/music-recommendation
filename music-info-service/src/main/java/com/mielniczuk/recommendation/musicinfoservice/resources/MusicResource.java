@@ -1,6 +1,6 @@
 package com.mielniczuk.recommendation.musicinfoservice.resources;
 
-import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MusicDTO;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.SongDataDTO;
 import com.mielniczuk.recommendation.musicinfoservice.services.MusicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class MusicResource {
     private final MusicService musicService;
 
     @GetMapping("/{musicId}")
-    public MusicDTO getMusicInfo(@PathVariable("musicId") Long musicId) {
+    public SongDataDTO getMusicInfo(@PathVariable("musicId") Long musicId) {
         return this.musicService.getMusic(musicId);
     }
 
