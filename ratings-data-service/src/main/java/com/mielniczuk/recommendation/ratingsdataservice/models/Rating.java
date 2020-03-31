@@ -1,11 +1,16 @@
 package com.mielniczuk.recommendation.ratingsdataservice.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "rating")
+@Data
+@ToString
 public class Rating {
 
     @Id
@@ -18,30 +23,4 @@ public class Rating {
     @JsonBackReference
     private UserRating userRating;
 
-    public Rating() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public UserRating getUserRating() {
-        return userRating;
-    }
-
-    public void setUserRating(UserRating userRating) {
-        this.userRating = userRating;
-    }
 }

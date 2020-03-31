@@ -1,6 +1,8 @@
 package com.mielniczuk.recommendation.ratingsdataservice.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_rating")
+@Data
+@ToString
 public class UserRating {
 
     @Id
@@ -31,21 +35,5 @@ public class UserRating {
     public void removeRating(Rating rating) {
         ratings.remove(rating);
         rating.setUserRating(null);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
     }
 }

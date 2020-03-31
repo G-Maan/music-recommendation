@@ -1,23 +1,18 @@
 package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.List;
 
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class RatingListDTO {
-
-    public RatingListDTO(List<RatingDTO> ratings) {
-        this.ratings = ratings;
-    }
-
-    public RatingListDTO() {
-    }
 
     private List<RatingDTO> ratings;
 
-    public List<RatingDTO> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<RatingDTO> ratings) {
-        this.ratings = ratings;
-    }
 }
