@@ -1,4 +1,4 @@
-package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
+package com.mielniczuk.recommendation.musicinfoservice.models.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,8 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class RatingListDTO {
+public class MovieRatingIDListDTO {
 
-    private List<RatingDTO> ratings;
+    private List<Long> movieRatingIds;
 
 }

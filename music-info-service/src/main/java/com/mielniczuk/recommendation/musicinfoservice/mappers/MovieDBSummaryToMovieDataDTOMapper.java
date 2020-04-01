@@ -1,12 +1,13 @@
 package com.mielniczuk.recommendation.musicinfoservice.mappers;
 
-import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDTO;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDataDTO;
 import com.mielniczuk.recommendation.musicinfoservice.models.externalApis.MovieDBSummary;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface MovieDBSummaryToMovieDTOMapper {
+public interface MovieDBSummaryToMovieDataDTOMapper {
 
-    MovieDTO toDTO(MovieDBSummary movieDBSummary);
+    MovieDataDTO toDTO(MovieDBSummary movieDBSummary);
 
 }

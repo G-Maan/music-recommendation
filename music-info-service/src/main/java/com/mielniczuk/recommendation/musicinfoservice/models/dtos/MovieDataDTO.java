@@ -1,4 +1,4 @@
-package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
+package com.mielniczuk.recommendation.musicinfoservice.models.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,12 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CatalogDTO {
+public class MovieDataDTO {
 
     private Long id;
-    private String name;
-    private String description;
-    private int rating;
+
+    private String title;
+
+    private String overview;
 
 }

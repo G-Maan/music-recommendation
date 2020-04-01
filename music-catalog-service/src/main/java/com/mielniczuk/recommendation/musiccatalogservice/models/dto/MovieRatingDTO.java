@@ -9,12 +9,9 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MovieDTO {
+public class MovieRatingDTO {
 
     private Long id;
-
-    private String title;
-
-    private String overview;
+    private int value;
 
 }

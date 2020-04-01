@@ -1,15 +1,20 @@
 package com.mielniczuk.recommendation.musiccatalogservice.models.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
-public class MovieSummary {
+@NoArgsConstructor
+@AllArgsConstructor
+public class MovieDataDTO {
 
     private Long id;
 
     private String title;
 
     private String overview;
+
 }

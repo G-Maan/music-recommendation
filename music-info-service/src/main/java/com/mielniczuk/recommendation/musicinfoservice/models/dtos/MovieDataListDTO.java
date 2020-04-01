@@ -5,16 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MovieDTO {
+public class MovieDataListDTO {
 
-    private Long id;
-
-    private String title;
-
-    private String overview;
+    private List<MovieDataDTO> movieDataDTOS;
 
 }

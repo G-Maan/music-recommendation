@@ -1,12 +1,11 @@
 package com.mielniczuk.recommendation.musicinfoservice.resources;
 
-import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDTO;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDataDTO;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieRatingIDListDTO;
+import com.mielniczuk.recommendation.musicinfoservice.models.dtos.MovieDataListDTO;
 import com.mielniczuk.recommendation.musicinfoservice.services.MovieService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/movies")
@@ -16,7 +15,12 @@ public class MovieResource {
     private final MovieService movieService;
 
     @GetMapping("/{movieId}")
-    public MovieDTO getMovieInfo(@PathVariable("movieId") Long movieId) {
+    public MovieDataDTO getMovieInfo(@PathVariable("movieId") Long movieId) {
         return movieService.getMovieSummaryFromMovieDB(movieId);
+    }
+
+    @PostMapping("/list")
+    public MovieDataListDTO getMovieInfoList(@RequestBody MovieRatingIDListDTO movieRatingListDTO) {
+        return movieService.getMovieSummaryListFromMovieDB(movieRatingListDTO);
     }
 }
