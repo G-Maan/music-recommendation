@@ -2,12 +2,10 @@ package com.mielniczuk.recommendation.musiccatalogservice.services;
 
 import com.mielniczuk.recommendation.musiccatalogservice.mappers.CatalogMapper;
 import com.mielniczuk.recommendation.musiccatalogservice.models.dto.*;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -24,21 +22,22 @@ public class MusicCatalogService {
     @Qualifier("ratingWebClient")
     private final WebClient ratingWebClient;
 
-    private final RestTemplate restTemplate;
-
     private final CatalogMapper catalogMapper;
 
-    @HystrixCommand(fallbackMethod = "getFallbackUserMusicCatalog")
+    private final MovieRatingService movieRatingService;
+
+    private final MovieDataService movieDataService;
+
     public UserCatalogDTO getUserMusicCatalog(Long userId) {
         try {
-            MovieRatingListDTO movieRatingListDTO = restTemplate.getForObject("http://ratings-data-service/ratings/users/" + userId, MovieRatingListDTO.class);
-            UserCatalogDTO userCatalogDTO = new UserCatalogDTO();
+            MovieRatingListDTO movieRatingListDTO = movieRatingService.getMovieRatingList(userId);
 
+            UserCatalogDTO userCatalogDTO = new UserCatalogDTO();
             List<CatalogDTO> catalogDTOS = new ArrayList<>();
 
             MovieRatingIDListDTO movieRatingIDListDTO = new MovieRatingIDListDTO(movieRatingListDTO.getRatings().stream().map(MovieRatingDTO::getId).collect(Collectors.toList()));
 
-            MovieDataListDTO movieDataListDTO = restTemplate.postForObject("http://music-info-service/movies/list/", movieRatingIDListDTO, MovieDataListDTO.class);
+            MovieDataListDTO movieDataListDTO = movieDataService.getMovieDataList(movieRatingIDListDTO);
 
             movieDataListDTO.getMovieDataDTOS().forEach(movieDataDTO -> {
                 Optional<MovieRatingDTO> movieRatingDTO = movieRatingListDTO.getRatings().stream().filter(movieRat -> movieRat.getId().equals(movieDataDTO.getId())).findFirst();
@@ -71,9 +70,7 @@ public class MusicCatalogService {
 //        return Flux.zip(musicDTOFlux, ratingDTOFlux, (BiFunction<MusicDTO, RatingDTO, CatalogDTO>) CatalogDTO::new).zipWithIterable(ratedMusic, (catalog, rated) -> new CatalogDTO(rated, catalog));
     }
 
-    public UserCatalogDTO getFallbackUserMusicCatalog(Long userId) {
-        return new UserCatalogDTO();
-    }
+
 
     private Mono<MusicDTO> getMusicInfo(int id) {
         return musicInfoWebClient.get()
