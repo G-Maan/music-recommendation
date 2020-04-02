@@ -2,6 +2,7 @@ package com.mielniczuk.recommendation.musiccatalogservice.resources;
 
 import com.mielniczuk.recommendation.musiccatalogservice.models.dto.*;
 import com.mielniczuk.recommendation.musiccatalogservice.services.MusicCatalogService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,5 @@ public class MusicCatalogResource {
     public UserCatalogDTO getCatalog(@PathVariable("userId") Long userId) {
         return musicCatalogService.getUserMusicCatalog(userId);
     }
-
-
 
 }

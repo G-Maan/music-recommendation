@@ -2,6 +2,7 @@ package com.mielniczuk.recommendation.musiccatalogservice.services;
 
 import com.mielniczuk.recommendation.musiccatalogservice.mappers.CatalogMapper;
 import com.mielniczuk.recommendation.musiccatalogservice.models.dto.*;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +28,7 @@ public class MusicCatalogService {
 
     private final CatalogMapper catalogMapper;
 
+    @HystrixCommand(fallbackMethod = "getFallbackUserMusicCatalog")
     public UserCatalogDTO getUserMusicCatalog(Long userId) {
         try {
             MovieRatingListDTO movieRatingListDTO = restTemplate.getForObject("http://ratings-data-service/ratings/users/" + userId, MovieRatingListDTO.class);
@@ -70,6 +69,10 @@ public class MusicCatalogService {
 //        ratingDTOFlux.subscribe(System.out::println);*/
 
 //        return Flux.zip(musicDTOFlux, ratingDTOFlux, (BiFunction<MusicDTO, RatingDTO, CatalogDTO>) CatalogDTO::new).zipWithIterable(ratedMusic, (catalog, rated) -> new CatalogDTO(rated, catalog));
+    }
+
+    public UserCatalogDTO getFallbackUserMusicCatalog(Long userId) {
+        return new UserCatalogDTO();
     }
 
     private Mono<MusicDTO> getMusicInfo(int id) {
