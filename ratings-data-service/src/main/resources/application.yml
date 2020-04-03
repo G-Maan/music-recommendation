@@ -1,0 +1,23 @@
+## server properties
+server:
+  port: 8083
+spring:
+  application:
+    name: ratings-data-service
+  ## default connection pool
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+    ## PostgreSQL
+    url: jdbc:postgresql://localhost:5432/ratings
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+## Eureka properties
+eureka:
+  client:
+    eureka-server-port: 8761
