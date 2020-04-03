@@ -3,5 +3,8 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: https://github.com/G-Maan/music-recommendation
           skip-ssl-validation: true
+          search-paths: config
+server:
+  port: 8888
