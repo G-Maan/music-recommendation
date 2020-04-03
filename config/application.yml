@@ -1,2 +1,3 @@
-init:
- message: "Init message"
+connection:
+ music-rating-service: http://ratings-data-service/
+ music-info-service: http://music-info-service/
